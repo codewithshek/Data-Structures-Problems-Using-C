@@ -1,0 +1,135 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node *next, *prev;
+};
+
+struct node *front=NULL,*rear=NULL;
+int size=0;
+ void insert_rear(int x)
+{
+struct node *newnode; 
+newnode=(struct node *)malloc(sizeof(struct node)); 
+newnode->data=x; newnode->next=NULL; newnode->prev=NULL;
+
+// If deque is empty
+if (front == NULL)  rear = front = newnode;
+
+// Inserts node at the rear end
+else {
+newnode->prev = rear;
+rear->next = newnode;
+rear = newnode;
+}
+size++;
+}
+ void insert_front(int x)
+{
+struct node *newnode; 
+newnode=(struct node *)malloc(sizeof(struct node)); 
+newnode->data=x; newnode->next=NULL; newnode->prev=NULL;
+
+// If deque is empty
+if (front == NULL)  rear = front = newnode;
+
+// Inserts node at the front end
+else {
+newnode->next = front;
+front->prev = newnode;
+front = newnode;
+}
+size++;
+}
+void deleteFront() 
+{ struct node *temp;
+    if (front==NULL) {printf("Queue is empty\n");return;} 
+        int x = front->data;
+        temp = front; 
+        front = front->next; 
+  
+        // If only one element was present 
+        if (front == NULL) 
+            rear = NULL; 
+        else
+            front->prev = NULL; 
+        free(temp); 
+  
+        // Decrements count of elements by 1 
+        size--; 
+           
+} 
+void deleteRear() 
+{ struct node *temp;
+    if (front==NULL) {printf("Queue is empty\n");return;
+    } 
+        int x = rear->data;
+        temp = rear; 
+        rear = rear->prev ;
+  
+        // If only one element was present 
+        if (rear == NULL) 
+            front= NULL; 
+        else
+            rear->next = NULL; 
+        free(temp); 
+  
+        // Decrements count of elements by 1 
+        size--;     
+         
+} 
+void getRear() 
+{ 
+    if (front==NULL) 
+        {printf("Queue is empty\n"); return;}
+    printf("rear element is = %d\n ", rear->data); 
+} 
+void getFront() 
+{ 
+    if (front==NULL) 
+        {printf("Queue is empty\n");return;}
+    printf("peek element is = %d\n ", front->data); 
+} 
+void qsize()
+{printf("%d ",size);}
+
+void erase() 
+{ struct node *temp;
+    rear = NULL; 
+    while (front != NULL) { 
+        temp = front; 
+        front = front->next; 
+        free(temp); 
+    } 
+    size = 0; 
+} 
+void display(){
+   struct node *temp=front;
+   while(temp!=NULL)
+{
+    printf("%d ",temp->data);
+    temp=temp->next;
+}
+}
+void main()
+{
+    int n,x;
+    do{
+        printf("enter your option : ");
+        scanf("%d",&n);
+        switch(n){
+            case 1 : scanf("%d",&x);
+                    insert_front(x);break;
+            case 2 : scanf("%d",&x);
+                    insert_rear(x);break;
+            case 3 : display();break;
+            case 4 : getFront();break;
+            case 5 : getRear();break;
+            case 6 : deleteFront();break;
+            case 7 : deleteRear();break;
+            case 8 : erase();break;
+            case 9 : qsize();break;
+        }
+    }while(n<10);
+}

@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node  
+{  
+    int priority;  
+    int data;  
+    struct node *next;  
+} *front = NULL, *rear = NULL, *temp; 
+
+void create(int data, int priority) {
+    struct node *nn, *temp;
+    nn = (struct node*)malloc(sizeof(struct node));
+    nn->data = data;
+    nn->priority = priority;
+    nn->next = NULL;
+
+    if (front == NULL || priority < front->priority) {
+        nn->next = front;
+        front = nn;
+    } else {
+        temp = front;
+        while (temp->next != NULL && temp->next->priority <= priority)
+            temp = temp->next;
+        nn->next = temp->next;
+        temp->next = nn;
+    }
+}
+
+void del() {
+    if (front == NULL) {
+        printf("Queue underflow\n");
+    } else {
+        temp = front;
+        front = front->next;
+        free(temp);
+    }
+}
+
+void peek() {
+    if (front == NULL) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Peek: %d\n", front->data);
+    }
+}
+
+void display() {
+    if (front == NULL) {
+        printf("Queue is empty\n");
+    } else {
+        struct node *temp = front;
+        printf("\nThe elements in the Queue are: \n");
+        while (temp != NULL) {
+            printf("Data: %d, Priority: %d\n", temp->data, temp->priority);
+            temp = temp->next;
+        }
+    }
+}
+
+int main() {
+    create(1, 6);
+    create(4, 3);
+    create(6, 10);
+    peek();
+    display();
+    del();
+    return 0;
+}
+
+//PRIORITY QUEUE
