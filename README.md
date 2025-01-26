@@ -2,6 +2,41 @@
 
 This repository contains various data structure problems implemented in the C programming language. Each folder contains the implementation of a specific data structure or algorithm.
 
+# Directory structure:
+└── github.com/codewithshek/data-structures-problems-using-c/
+
+    ├── README.md
+    ├── AVL/
+    │   └── main.c
+    ├── BFS/
+    │   └── main.c
+    ├── BST/
+    │   └── main.c
+    ├── Boyer Moore & Brute Force_/
+    │   └── main.c
+    ├── Circular Linked List/
+    │   └── main.c
+    ├── Circular Queue Using Linked List/
+    │   └── main.c
+    ├── DFS/
+    │   └── main.c
+    ├── Deque Using Linked List/
+    │   └── source code
+    ├── Dictionaries/
+    │   └── main.c
+    ├── HashTable With Linear Probing/
+    │   └── main.c
+    ├── Heap sort/
+    │   └── main.c
+    ├── Knuth Morris Pratt Algorithm/
+    │   └── main.c
+    ├── Polynomial Addition/
+    │   └── main.c
+    ├── Polynomial Multiplication/
+    │   └── main.c
+    └── Priority Queue/
+        └── source code
+
 # Contents
 * AVL: Implementation of AVL Trees.
 * BFS: Implementation of Breadth-First Search algorithm.
